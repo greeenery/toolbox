@@ -1,0 +1,366 @@
+body,
+ul,
+li,
+a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  margin: 0 10%;
+}
+
+/* 탭 메뉴 */
+
+.tab-box {
+  /* 탭 메뉴 사이즈 조절 */
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-box > .tab-btn {
+  display: flex;
+}
+
+.tab-box > .tab-btn > .btn {
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+.tab-box > .tab-btn > .btn.active {
+  color: red;
+  font-weight: bold;
+}
+
+.tab-box > .tab-content {
+  position: relative;
+  flex-grow: 1;
+}
+
+.tab-box > .tab-content > .content {
+  background-color: #afafaf;
+  padding: 10px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  box-sizing: border-box;
+}
+
+.tab-box > .tab-content > .content.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 햄버거 */
+
+.hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.hamburger > span {
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  background-color: black;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.line-1 {
+  top: 0;
+}
+
+.line-2 {
+  top: 50%;
+  transform: translatey(-50%);
+}
+
+.line-3 {
+  bottom: 0;
+}
+
+.hamburger.active > .line-1 {
+  transform: translatey(-50%) rotate(45deg);
+  top: 50%;
+}
+
+.hamburger.active > .line-2 {
+  opacity: 0;
+}
+.hamburger.active > .line-3 {
+  transform: translatey(-50%) rotate(-45deg);
+  top: 50%;
+}
+
+/* 스와이퍼 색상 변경하기 */
+:root {
+  --swiper-theme-color: #343434 !important;
+}
+
+/* 라이브러리 */
+.img-box > img {
+  width: 100%;
+  display: block;
+}
+
+/* 커스텀 */
+
+/* 스와이퍼 메인 컨테이너는 반!드!시! 높이가 지정되어 있어야 한다. */
+/* 내용이 들어가있을 경우, 높이는 더이상 0이 아니기 때문에 높이를 주지 않아도 된다! */
+.slider-box-1 .swiper {
+  /* 넓이를 빼 반응형으로 변경한다. block의 원리, 안 줬을 경우 넓이가 100% */
+  /*   width: 1920px; */
+}
+
+/* 스크롤바 커스텀 */
+.slider-box-1 .swiper-horizontal > .swiper-scrollbar {
+  height: 1px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/* 슬라이드 커스텀 */
+.slider-box-1 .swiper-slide {
+  padding-bottom: 54px;
+}
+
+.slider-box-1 .prod-info {
+  padding: 8px;
+  margin-top: 8px;
+}
+
+.slider-box-1 .prod-info > .prod-info__title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.slider-box-1 .prod-info > .prod-info__sub {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.slider-box-1 .sns-info {
+  margin-top: 16px;
+  padding: 8px;
+  display: flex;
+}
+
+.slider-box-1 .sns-info > .sns-info__id {
+  margin-left: 8px;
+}
+
+.slider-box-1 .sns-info > .sns-info__id > div:first-child {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.slider-box-1 .sns-info > .sns-info__id > div:nth-child(2) {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.slider-box-1 .sns-info > .sns-info__img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* 화살표 버튼 커스텀 */
+/* 평소에는 안 보였다가, */
+.slider-box-1 .swiper-button-prev,
+.slider-box-1 .swiper-button-next {
+  display: none;
+  top: 40%;
+}
+
+/* .slider-box-1 범위 내에 마우스가 들어갔을 경우 보이도록! */
+.slider-box-1:hover .swiper-button-prev,
+.slider-box-1:hover .swiper-button-next {
+  display: block;
+}
+
+/* 더이상 넘길 슬라이드가 없을 경우, .swiper-button-disabled가 붙는다. */
+/* disabled 되었을 때, 버튼을 숨긴다. */
+.slider-box-1 .swiper-button-prev.swiper-button-disabled,
+.slider-box-1 .swiper-button-next.swiper-button-disabled {
+  display: none;
+}
+
+/* 화살표 버튼을 다른 이미지로 변경하기 위해 기존 화살표 제거 */
+.slider-box-1 .swiper-button-prev::after,
+.slider-box-1 .swiper-button-next::after {
+  display: none;
+}
+
+/* 메가 메뉴 */
+/* 메가 메뉴의 핵심 */
+/* 1차 메뉴에 마우스를 올렸을 때 2차 메뉴가 나오는 것은 기존과 동일하다. */
+/* 단순히, 1차 메뉴에 마우스를 올리면 2차메뉴가 나옴과 동시에 header의 높이 또한 커지며, 감싸고 있는 듯 보이게 된다. */
+
+/* 라이브러리 */
+.con {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* 키가 커질 header */
+/* 핵심: 기본 높이를 주어야 transition이 적용 된다. */
+/* 높이를 주지 않으면 auto -> 변경된 값이 되기 때문에 중간값이 없어 적용이 되지 않는다. */
+header {
+  /*   border:3px solid red; */
+  background-color: #f8f8f8;
+  height: 68px;
+  transition: 0.3s;
+  border-bottom: 1px solid #ccc;
+}
+
+/* 마우스를 올리면 on이 되어 키가 커진다 */
+header.on {
+  height: 260px;
+}
+
+/* 헤더의 원본 얘가 진짜 헤더! */
+.header__inner {
+  padding: 10px 20px;
+  /*   border:3px solid green; */
+  background-color: white;
+}
+
+.con {
+  /*   border:3px solid blue; */
+  display: flex;
+}
+
+/* flex : 1 1 0% = 어떠한 내용이 들어가 있더라도 같은 값을 준 요소와 항상 1:1 비율로 유지한다. */
+/* header__logo와 header__lang에 주어 header__menu가 정확히 가운데에 위치하도록 함! */
+.header__logo {
+  /*   border:3px solid pink; */
+  flex: 1 1 0%;
+}
+
+.header__menu {
+  /*   border:3px solid gold; */
+}
+
+.header__menu > ul {
+  display: flex;
+}
+
+/* 2차 메뉴를 정확히 1차 메뉴 아래에 위치하기 위함 (유령의 집) */
+.header__menu > ul > li {
+  position: relative;
+}
+
+/* 1차 메뉴 아이템 텍스트 */
+.header__menu > ul > li > a {
+  /*   background-color:red; */
+  display: block;
+  padding: 12px 16px;
+}
+
+.header__menu > ul ul {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  position: absolute;
+  top: 140%;
+  left: 0;
+}
+
+header.on .header__menu > ul > li > ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+.header__menu > ul ul > li > a {
+  display: block;
+  padding: 4px 16px;
+}
+
+/* 얘는 display:flex도 적용이 되어 있고, 부모에게도 flex가 적용이 되어 있어, */
+/* flex 컨테이너이면서 flex 아이템의 역할 모두 하고 있다! */
+.header__lang {
+  /*   border:3px solid black; */
+  flex: 1 1 0%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header__lang > div {
+  background-color: #222;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 30px;
+  color: gray;
+}
+
+.header__lang > div > a:first-child {
+  color: white;
+}
+
+/* 밑줄 애니메이션 */
+/* 메뉴 커스텀 */
+.menu-box {
+  background-color: #fcf8e8;
+}
+
+.menu-box > ul {
+  display: flex;
+}
+
+.menu-box > ul > li > a {
+  display: block;
+  padding: 10px 0;
+  margin: 0 8px;
+  font-weight: bold;
+  color: #555;
+
+  /* 핵심 밑줄이 a에 갇혀 있어야 한다! */
+  position: relative;
+}
+
+/* 밑줄 커스텀 */
+.menu-box > ul > li > a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #94b49f;
+  transition: 0.3s;
+}
+
+.menu-box > ul > li:hover > a::after {
+  width: 100%;
+}
+
+/* 각 위치 조절 */
+.menu-box-1 > ul > li > a::after {
+  left: 0;
+}
+
+.menu-box-2 > ul > li > a::after {
+  right: 0;
+}
+
+.menu-box-3 > ul > li > a::after {
+  left: 50%;
+  transform: translatex(-50%);
+}
